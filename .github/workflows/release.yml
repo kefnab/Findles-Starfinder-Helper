@@ -63,7 +63,7 @@ jobs:
           sha256sum module.zip dist/module.json > checksums.sha256
 
       - name: Attest Build Provenance
-        uses: actions/attest-build-provenance@v1
+        uses: actions/attest-build-provenance@v4
         with:
           subject-path: |
             module.zip
