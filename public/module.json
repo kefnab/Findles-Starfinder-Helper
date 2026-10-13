@@ -1,15 +1,39 @@
 {
-  "name": "findles-starfinder-helper",
-  "version": "0.0.0",
-  "type": "module",
+  "id": "findles-starfinder-helper",
+  "title": "Findle's Starfinder Helper",
   "description": "Starfinder 2e helper module for Foundry VTT v14+",
-  "scripts": {
-    "build": "tsc --noEmit && vite build",
-    "dev": "vite build --watch"
+  "version": "0.0.0",
+    "authors": [
+    {
+    "name": "Findle",
+    "discord": "Findle_Fuzzytoe"
+    }
+  ],
+  "compatibility": {
+    "minimum": "14",
+    "verified": "14.367",
+    "maximum": "14"
   },
-  "devDependencies": {
-    "fvtt-types": "github:League-of-Foundry-Developers/foundry-vtt-types#main",
-    "typescript": "^5.6.0",
-    "vite": "^6.0.0"
-  }
+  "system": ["sf2e"],
+  "esmodules": [
+    "index.js"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "relationships": {
+   "systems": [
+    {
+      "id": "sf2e",
+      "type": "system",
+      "compatibility": {
+        "minimum": "1.6.0"
+      }
+    }
+  ]
+}
 }

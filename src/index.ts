@@ -11,17 +11,29 @@ Hooks.on('ready', () => {
   console.log(`findles-starfinder-helper | Ready on ${game.system.id} v${game.system.version}`);
 });
 
-Hooks.on('renderChatMessage', (rawMessage, html) => {
+Hooks.on('renderChatMessageHTML', (rawMessage: unknown, html: HTMLElement) => {
   const message = rawMessage as ChatMessagePF2e;
   const actor = message.actor;
 
-  // Type guard: Narrows actor to CreaturePF2e
+  // Type guard: Narrows actor to CreaturePF2e which has an hp value
   if (!actor?.isOfType('creature')) return;
 
-  const isDown = actor.isDead;
   const currentHp = actor.system.attributes.hp.value;
 
-  if (isDown) {
-    console.warn(`findles-starfinder-helper | Message from downed actor: ${actor.name} (HP: ${currentHp})`);
+  // actor.statuses is a native Set<string> recognized by fvtt-types
+  const isDying = actor.statuses.has('dying');
+  const isUnconscious = actor.statuses.has('unconscious');
+  const isDead = actor.statuses.has('dead');
+
+  const isDown = isDead || isDying || isUnconscious || currentHp <= 0;
+
+if (isDown) {
+  // Provides localization support for the warning message, falling back to a default message if the localization key is not found.
+    const i18n = game.i18n!;
+    const warningText = i18n.has('FSH.Warnings.DownedActor')
+      ? i18n.format('FSH.Warnings.DownedActor', { name: actor.name, hp: currentHp })
+      : `Message from downed actor: ${actor.name} (HP: ${currentHp})`;
+
+    console.warn(`findles-starfinder-helper | ${warningText}`);
   }
 });

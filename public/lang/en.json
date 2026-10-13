@@ -1,0 +1,10 @@
+{
+  "FSH": {
+    "Warnings": {
+      "DownedActor": "Message from downed actor: {name} (HP: {hp})"
+    },
+    "Chat": {
+      "DownedBadge": "Downed"
+    }
+  }
+}
