@@ -1,0 +1,13 @@
+{
+  "FSH": {
+    "Robot": {
+      "Broken": "{name} is broken! (Broken {count} times within 10 minutes. If broken >2 times, it will be destroyed).",
+      "Destroyed": "{name} has been broken {count} times within 10 minutes and is DESTROYED! Rebuilding requires 1 day of downtime.",
+      "CraftingStabilize": "Crafting (Robot Stabilize)"
+    },
+    "Warnings": {
+      "DownedActor": "Message from downed actor: {name} (HP: {hp})",
+      "DownedRobot": "Message from broken robot companion: {name} (HP: {hp})"
+    }
+  }
+}

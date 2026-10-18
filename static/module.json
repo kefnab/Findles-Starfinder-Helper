@@ -3,7 +3,7 @@
   "title": "Findle's Starfinder Helper",
   "description": "Starfinder 2e helper module for Foundry VTT v14+",
   "version": "0.0.0",
-    "authors": [
+  "authors": [
     {
     "name": "Findle",
     "discord": "Findle_Fuzzytoe"
@@ -11,8 +11,7 @@
   ],
   "compatibility": {
     "minimum": "14",
-    "verified": "14.367",
-    "maximum": "14"
+    "verified": "14.367"
   },
   "system": ["sf2e"],
   "esmodules": [
@@ -26,14 +25,15 @@
     }
   ],
   "relationships": {
-   "systems": [
-    {
+    "systems": [
+      {
       "id": "sf2e",
       "type": "system",
       "compatibility": {
-        "minimum": "1.6.0"
+        "minimum": "1.6.0",
+        "verified": "1.6.0"
+        }
       }
-    }
-  ]
-}
+    ]
+  }
 }
