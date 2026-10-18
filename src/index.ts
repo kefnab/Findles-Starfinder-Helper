@@ -1,39 +1,26 @@
-Hooks.once('init', () => {
-  console.log('findles-starfinder-helper | Initialized');
+export const MODULE_ID = "findles-starfinder-helper" as const;
+
+Hooks.once("init", () => {
+  console.log(`${MODULE_ID} | Initializing Findle's Starfinder Helper`);
+
+  if (!game.settings) return;
+
+  game.settings.register(MODULE_ID, "enableWelcome", {
+    name: "FINDLES_SF2E.Settings.EnableWelcome.Name",
+    hint: "FINDLES_SF2E.Settings.EnableWelcome.Hint",
+    scope: "client",
+    config: true,
+    type: Boolean,
+    default: true
+  });
 });
 
-Hooks.on('ready', () => {
-  if (game.system?.id !== 'sf2e') {
-    ui.notifications?.warn("Findle's Starfinder Helper requires the Starfinder 2e system.");
-    return;
-  }
+Hooks.once("ready", () => {
+  if (!game.settings || !game.i18n) return;
 
-  console.log(`findles-starfinder-helper | Ready on ${game.system.id} v${game.system.version}`);
-});
-
-Hooks.on('renderChatMessageHTML', (rawMessage: unknown, html: HTMLElement) => {
-  const message = rawMessage as ChatMessagePF2e;
-  const actor = message.actor;
-
-  // Type guard: Narrows actor to CreaturePF2e which has an hp value
-  if (!actor?.isOfType('creature')) return;
-
-  const currentHp = actor.system.attributes.hp.value;
-
-  // actor.statuses is a native Set<string> recognized by fvtt-types
-  const isDying = actor.statuses.has('dying');
-  const isUnconscious = actor.statuses.has('unconscious');
-  const isDead = actor.statuses.has('dead');
-
-  const isDown = isDead || isDying || isUnconscious || currentHp <= 0;
-
-if (isDown) {
-  // Provides localization support for the warning message, falling back to a default message if the localization key is not found.
-    const i18n = game.i18n!;
-    const warningText = i18n.has('FSH.Warnings.DownedActor')
-      ? i18n.format('FSH.Warnings.DownedActor', { name: actor.name, hp: currentHp })
-      : `Message from downed actor: ${actor.name} (HP: ${currentHp})`;
-
-    console.warn(`findles-starfinder-helper | ${warningText}`);
+  const showWelcome = game.settings.get(MODULE_ID, "enableWelcome");
+  if (showWelcome) {
+    const message = game.i18n.localize("FINDLES_SF2E.WelcomeMessage");
+    ui.notifications?.info(message);
   }
 });
