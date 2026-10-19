@@ -1,0 +1,18 @@
+.findles-helper-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0.5rem;
+}
+
+.findles-helper-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.findles-helper-badge {
+  font-size: 1.25rem;
+  font-weight: bold;
+}

@@ -1,6 +1,13 @@
 {
   "FINDLES_SF2E": {
-    "WelcomeMessage": "My SF2e Module loaded from GitHub Release!",
+    "WelcomeMessage": "Findle's Starfinder Helper is active and ready!",
+    "WindowTitle": "Findle's Starfinder Helper",
+    "Keybindings": {
+      "OpenHelper": {
+        "Name": "Toggle Starfinder Helper Window",
+        "Hint": "Opens or closes Findle's Starfinder Helper."
+      }
+    },
     "Settings": {
       "EnableWelcome": {
         "Name": "Show Welcome Notification",

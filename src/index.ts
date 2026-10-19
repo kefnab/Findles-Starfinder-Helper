@@ -1,9 +1,13 @@
+import { HelperApp } from "./HelperApp";
+
 export const MODULE_ID = "findles-starfinder-helper" as const;
+
+let helperApp: HelperApp | null = null;
 
 Hooks.once("init", () => {
   console.log(`${MODULE_ID} | Initializing Findle's Starfinder Helper`);
 
-  if (!game.settings) return;
+  if (!game.settings || !game.keybindings) return;
 
   game.settings.register(MODULE_ID, "enableWelcome", {
     name: "FINDLES_SF2E.Settings.EnableWelcome.Name",
@@ -12,6 +16,21 @@ Hooks.once("init", () => {
     config: true,
     type: Boolean,
     default: true
+  });
+
+  game.keybindings.register(MODULE_ID, "openHelper", {
+    name: "FINDLES_SF2E.Keybindings.OpenHelper.Name",
+    hint: "FINDLES_SF2E.Keybindings.OpenHelper.Hint",
+    editable: [{ key: "KeyH", modifiers: ["ALT"] }],
+    onDown: () => {
+      helperApp ??= new HelperApp();
+      if (helperApp.rendered) {
+        void helperApp.close();
+      } else {
+        void helperApp.render({ force: true });
+      }
+      return true;
+    }
   });
 });
 

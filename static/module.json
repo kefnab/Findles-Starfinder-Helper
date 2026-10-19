@@ -18,6 +18,9 @@
   "esmodules": [
     "index.js"
   ],
+  "styles": [
+    "styles/module.css"
+  ],
   "languages": [
     {
       "lang": "en",

@@ -14,5 +14,8 @@
     "**/dist/**": true,
     "**/vendor/**": true
   },
-  "js/ts.tsdk.path": "node_modules/typescript/lib"
+  "js/ts.tsdk.path": "node_modules/typescript/lib",
+  "[svelte]": {
+     "editor.defaultFormatter": "svelte.svelte-vscode"
+   },
 }
