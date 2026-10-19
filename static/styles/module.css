@@ -5,6 +5,37 @@
   padding: 0.5rem;
 }
 
+.findles-actor-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.findles-actor-portrait {
+  width: 48px;
+  height: 48px;
+  border-radius: 6px;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.findles-actor-title {
+  display: flex;
+  flex-direction: column;
+}
+
+.findles-actor-name {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.findles-actor-sub {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
 .findles-helper-row {
   display: flex;
   align-items: center;
@@ -12,7 +43,34 @@
   gap: 0.5rem;
 }
 
+.findles-stat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.findles-stat-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.4rem;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.findles-stat-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
 .findles-helper-badge {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: bold;
+}
+
+.findles-button-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.4rem;
 }
